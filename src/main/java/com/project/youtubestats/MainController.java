@@ -10,7 +10,12 @@ import java.util.*;
 
 @Controller
 public class MainController {
-    private double exchangeRate = 2;
+    private final double exchangeRate = 2;
+
+    @RequestMapping("/{path:[^\\.]*}")
+    public String redirect() {
+        return "forward:/";
+    }
 
     @GetMapping("/main")
     public String mainPage(Model model) {

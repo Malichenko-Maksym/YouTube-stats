@@ -1,0 +1,11 @@
+<form #inputForm="ngForm">
+    <div>
+        <label for="dataInput"></label>
+        <input type="number" id="dataInput" [(ngModel)]="data.dataInput" #dataInput="ngModel" required
+            placeholder="Input here">
+    </div>
+
+    <button (click)="onClick(inputForm)" class="btn btn-primary my-2">Submit</button>
+</form>
+
+<div class="bg-white p-1">Result: {{data.dataOutput}}</div>

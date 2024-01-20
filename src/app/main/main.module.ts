@@ -9,6 +9,6 @@ import { HttpclientService } from './services/httpclient.service';
 @NgModule({
   declarations: [TestFormComponent],
   imports: [CommonModule, FormsModule, HttpClientModule, MainRoutingModule],
-  providers: [HttpclientService]
+  providers: [HttpclientService],
 })
 export class MainModule {}

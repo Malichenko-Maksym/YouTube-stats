@@ -18,7 +18,7 @@ export class HttpclientService {
     return this.httpClient.post(
       this.URL,
       JSON.stringify({ someNumber: data }),
-      httpOptions
+      httpOptions,
     );
   }
 }

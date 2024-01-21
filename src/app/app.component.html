@@ -1,14 +1,14 @@
-<nav data-bs-theme="dark" class="navbar bg-secondary navbar-expand-lg p-2">
+<nav data-bs-theme="dark" class="navbar bg-primary navbar-expand-lg p-2">
   <div class="container-fluid">
-    <a routerLink="/" class="navbar-brand text-light">
+    <a routerLink="/" class="navbar-brand text-light d-flex align-items-center">
       <img src="favicon.ico" alt="logo" width="50" height="50" />
-      YouTubeStats
+      <span class="ms-1">YouTubeStats</span>
     </a>
 
-    <div class="navbar-nav">
+    <div class="navbar-nav d-flex align-items-center justify-content-center">
       <a routerLink="/" class="nav-link">Home</a>
-      <a routerLink="/addchannel" class="nav-link">Add Channels</a>
-      <a routerLink="/channellist" class="nav-link">Channel List</a>
+      <a routerLink="/channels/add" class="nav-link">Add Channels</a>
+      <a routerLink="/channels/list" class="nav-link">Channel List</a>
       <a routerLink="/about" class="nav-link">About</a>
     </div>
   </div>

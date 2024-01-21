@@ -20,8 +20,11 @@ export class AddChannelFormComponent {
     private channelService: ChannelService,
   ) {}
 
-  onSubmit(addChannelForm: NgForm) {
-    if (addChannelForm.valid) {
+  onSubmit(addChannelForm: NgForm): void {
+    if (
+      addChannelForm.valid &&
+      confirm('Are you sure you want to add this channel?')
+    ) {
       if (
         this.channelService.channelList.filter((channel: Channel) => {
           return this.channel.getId() === channel.getId();

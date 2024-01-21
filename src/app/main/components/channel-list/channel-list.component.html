@@ -1,0 +1,9 @@
+<h1 class="text-center mb-4">Channel List</h1>
+
+<ul class="list-group">
+  <app-channel-list-element
+    *ngFor="let channel of channelList"
+    [channel]="channel"
+    (removedChannelEvent)="onRemovedChannel($event)"
+  ></app-channel-list-element>
+</ul>

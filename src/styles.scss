@@ -3,7 +3,7 @@ $primary: #600000;
 $secondary: #6c757d;
 $success: green;
 $info: cyan;
-$warning: yellow;
+$warning: #f2ae47;
 $danger: red;
 $light: #f8f9fa;
 $dark: #212529;
@@ -12,9 +12,11 @@ $dark: #212529;
 
 body {
   background-color: $light;
+  background-image: url("assets/img/background-shapes.jpg");
 }
 
-input.ng-invalid.ng-touched, select.ng-invalid.ng-touched {
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched {
   border: solid $danger 1px;
 }
 
@@ -22,9 +24,8 @@ input.ng-invalid.ng-touched, select.ng-invalid.ng-touched {
   color: #666;
 }
 
-// TODO: Remove this. Temporary background color change, so my eyes don't burn out. <<
+html,
 body {
-  background-color: lightgray !important;
+  height: 100%;
+  margin: 0;
 }
-
-// >>

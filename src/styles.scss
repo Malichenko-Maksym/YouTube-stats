@@ -14,6 +14,14 @@ body {
   background-color: $light;
 }
 
+input.ng-invalid.ng-touched, select.ng-invalid.ng-touched {
+  border: solid $danger 1px;
+}
+
+.text-gray {
+  color: #666;
+}
+
 // TODO: Remove this. Temporary background color change, so my eyes don't burn out. <<
 body {
   background-color: lightgray !important;

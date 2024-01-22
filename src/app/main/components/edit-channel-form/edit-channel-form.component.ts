@@ -35,7 +35,7 @@ export class EditChannelFormComponent implements OnInit {
       ) {
         this.channelService.editChannel(this.channel);
 
-        this.router.navigate(['/channels/list']);
+        this.router.navigate(['/channel/list']);
       }
     }
   }

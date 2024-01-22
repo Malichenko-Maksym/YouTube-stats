@@ -17,6 +17,7 @@
           type="text"
           class="form-control"
           placeholder="Link to the YouTube channel"
+          pattern="^https:\/\/www\.youtube\.com\/(channel\/[\w-]{24}|@\w*)$"
           required
         />
       </div>
@@ -35,6 +36,7 @@
           type="text"
           class="form-control"
           placeholder="In-app display name of the channel"
+          pattern="[\w\W]{1,20}"
         />
       </div>
     </div>
@@ -53,6 +55,7 @@
           type="number"
           class="form-control"
           placeholder="How often to collect the data"
+          pattern="^[1-9]\d*$"
           required
         />
       </div>
@@ -69,6 +72,7 @@
           value="{{ currentDate | date: 'yyyy-MM-dd' }}"
           min="{{ currentDate | date: 'yyyy-MM-dd' }}"
           max="{{ maxDate | date: 'yyyy-MM-dd' }}"
+          pattern="^(19|20)\d{2}-(0?[1-9]|1[0-2])-(0?[1-9]|[12]\d|3[01])$"
           required
         />
       </div>

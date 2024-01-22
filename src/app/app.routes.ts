@@ -7,7 +7,7 @@ export const routes: Routes = [
       import('./about/about.module').then((m) => m.AboutModule),
   },
   {
-    path: 'channels',
+    path: 'channel',
     loadChildren: () => import('./main/main.module').then((m) => m.MainModule),
   },
 ];

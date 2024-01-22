@@ -41,8 +41,6 @@ export class AddChannelFormComponent {
         );
         this.channelService.addChannel(this.channel);
 
-        console.log(this.channel);
-
         this.router.navigate(['/channels/list']);
       }
     }

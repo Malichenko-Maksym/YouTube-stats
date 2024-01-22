@@ -106,6 +106,10 @@ export class Channel {
     this.onPause = onPause;
   }
 
+  public toggleOnPause(): void {
+    this.onPause = !this.onPause;
+  }
+
   public getUserComment(): string {
     return this.userComment;
   }

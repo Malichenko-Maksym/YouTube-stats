@@ -1,0 +1,178 @@
+<h1 class="text-center mb-4">Edit Channel</h1>
+
+<form
+  #editChannelForm="ngForm"
+  id="editChannelForm"
+  (ngSubmit)="onSubmit(editChannelForm)"
+>
+  <div class="container p-0">
+    <div class="row align-items-end">
+      <div class="col-8 mb-4">
+        <label for="channelLink" class="form-label">Channel URL</label>
+        <input
+          #channelLink="ngModel"
+          [(ngModel)]="channel.channelLink"
+          name="channelLink"
+          id="channelLink"
+          type="text"
+          class="form-control"
+          placeholder="Link to the YouTube channel"
+          required
+          disabled
+        />
+      </div>
+
+      <div class="col-4 mb-4">
+        <label for="channelUserAlias" class="form-label"
+          >Channel Alias<span class="fst-italic text-gray">
+            &#40;optional&#41;</span
+          >
+        </label>
+        <input
+          #channelUserAlias="ngModel"
+          [(ngModel)]="channel.channelUserAlias"
+          name="channelUserAlias"
+          id="channelUserAlias"
+          type="text"
+          class="form-control"
+          placeholder="In-app display name of the channel"
+        />
+      </div>
+    </div>
+
+    <div class="row align-items-end">
+      <div class="col mb-4">
+        <label for="collectOnceInNDays" class="form-label"
+          >Data Collection Frequency
+          <span class="fst-italic text-gray"> &#40;in days&#41;</span></label
+        >
+        <input
+          #collectOnceInNDays="ngModel"
+          [(ngModel)]="channel.collectOnceInNDays"
+          name="collectOnceInNDays"
+          id="collectOnceInNDays"
+          type="number"
+          class="form-control"
+          placeholder="How often to collect the data"
+          required
+        />
+      </div>
+
+      <div class="col mb-4">
+        <label for="startCollectingFrom">Start Collecting Data From</label>
+        <input
+          #startCollectingFrom="ngModel"
+          [(ngModel)]="channel.startCollectingFrom"
+          name="startCollectingFrom"
+          id="startCollectingFrom"
+          type="date"
+          class="form-control"
+          value="{{ currentDate | date: 'yyyy-MM-dd' }}"
+          min="{{ currentDate | date: 'yyyy-MM-dd' }}"
+          max="{{ maxDate | date: 'yyyy-MM-dd' }}"
+          required
+        />
+      </div>
+    </div>
+
+    <div class="row align-items-end">
+      <div class="col mb-4">
+        <div class="form-check">
+          <input
+            #collectVideoCount="ngModel"
+            [(ngModel)]="channel.collectVideoCount"
+            name="collectVideoCount"
+            id="collectVideoCount"
+            type="checkbox"
+            class="form-check-input"
+            checked
+          />
+          <label
+            for="collectVideoCount"
+            class="form-check-label user-select-none"
+            >Track Channel's Uploaded Video Count</label
+          >
+        </div>
+      </div>
+
+      <div class="col mb-4">
+        <div class="form-check">
+          <input
+            #collectSubscriberCount="ngModel"
+            [(ngModel)]="channel.collectSubscriberCount"
+            name="collectSubscriberCount"
+            id="collectSubscriberCount"
+            type="checkbox"
+            class="form-check-input"
+            checked
+          />
+          <label
+            for="collectSubscriberCount"
+            class="form-check-label user-select-none"
+            >Track Channel's Subscriber Count</label
+          >
+        </div>
+      </div>
+
+      <div class="col mb-4">
+        <div class="form-check">
+          <input
+            #collectViewCount="ngModel"
+            [(ngModel)]="channel.collectViewCount"
+            name="collectViewCount"
+            id="collectViewCount"
+            type="checkbox"
+            class="form-check-input"
+            checked
+          />
+          <label
+            for="collectViewCount"
+            class="form-check-label user-select-none"
+            >Track Channel's Views</label
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label for="userComment" class="form-label"
+        >User Comment<span class="fst-italic text-gray">
+          &#40;optional&#41;</span
+        >
+      </label>
+      <textarea
+        #userComment="ngModel"
+        [(ngModel)]="channel.userComment"
+        name="userComment"
+        id="userComment"
+        class="form-control"
+        maxlength="200"
+        placeholder="Free text area (e.g. for notes related to the channel)"
+      ></textarea>
+    </div>
+
+    <div class="mb-4">
+      <div class="form-check">
+        <input
+          #onPause="ngModel"
+          [(ngModel)]="channel.onPause"
+          name="onPause"
+          id="onPause"
+          type="checkbox"
+          class="form-check-input"
+        />
+        <label for="onPause" class="form-check-label user-select-none"
+          >Pause Tracking</label
+        >
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="editChannelForm.invalid"
+    >
+      Submit
+    </button>
+  </div>
+</form>

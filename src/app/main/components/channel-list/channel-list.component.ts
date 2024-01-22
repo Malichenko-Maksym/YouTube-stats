@@ -13,7 +13,7 @@ export class ChannelListComponent implements OnInit {
 
   constructor(private channelService: ChannelService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.loadChannelList();
   }
 

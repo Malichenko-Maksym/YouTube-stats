@@ -1,12 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Channel } from '../models/channel';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class ChannelService {
   channelList: Channel[] = [];
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) {
+    if (!environment.production) {
+      this.channelList = environment.channelList;
+    }
+  }
 
   addChannel(channel: Channel): Channel {
     this.channelList.push(channel);
@@ -27,5 +32,12 @@ export class ChannelService {
     this.channelList = this.channelList.filter((channel: Channel) => {
       return channel.getId() !== removedChannel.getId();
     });
+  }
+
+  editChannel(channel: Channel): Channel {
+    this.removeChannel(channel);
+    this.addChannel(channel);
+
+    return channel;
   }
 }

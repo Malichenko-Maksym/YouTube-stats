@@ -1,1 +1,73 @@
-<p>channel works!</p>
+<div class="d-flex justify-content-between align-items-center mb-4 border-bottom">
+  <h1 class="text-center">
+    {{ channel.getChannelUserAlias() }} &#40;{{
+      channel.getChannelUserAlias()
+    }}&#41;
+  </h1>
+
+  <div class="d-flex gap-2">
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="channel.toggleOnPause()"
+    >
+      <span
+        *ngIf="
+          channel.getOnPause();
+          then thenPauseButtonBlock;
+          else elsePauseButtonBlock
+        "
+      ></span>
+      <ng-template #thenPauseButtonBlock>Resume</ng-template>
+      <ng-template #elsePauseButtonBlock>Pause</ng-template>
+    </button>
+
+    <button
+      type="button"
+      class="btn btn-secondary"
+      routerLink="/channel/{{ channel.getId() }}/edit"
+    >
+      Edit
+    </button>
+
+    <button
+      type="button"
+      class="btn btn-warning"
+      (click)="onRemovedChannel(channel)"
+    >
+      Remove
+    </button>
+  </div>
+</div>
+
+<h4>
+  Channel tracking
+  <span
+    *ngIf="channel.getOnPause(); then thenPauseInfo; else elsePauseInfo"
+  ></span>
+  <ng-template #thenPauseInfo>paused.</ng-template>
+  <ng-template #elsePauseInfo
+    >resumed. Tracking:
+    <ul
+      class="list-group list-group-horizontal d-flex flex-row justify-content-start align-items-start mt-3"
+    >
+      <li *ngIf="channel.getCollectVideoCount()" class="list-group-item">
+        <span class="fs-6">Uploaded Video Count</span>
+      </li>
+      <li *ngIf="channel.getCollectViewCount()" class="list-group-item">
+        <span class="fs-6">Channel's Views</span>
+      </li>
+      <li *ngIf="channel.getCollectSubscriberCount()" class="list-group-item">
+        <span class="fs-6">Subscriber Count</span>
+      </li>
+    </ul></ng-template
+  >
+</h4>
+
+<div
+  [ngStyle]="
+    channel.onPause
+      ? { 'text-decoration': 'line-through', 'font-style': 'italic' }
+      : {}
+  "
+></div>

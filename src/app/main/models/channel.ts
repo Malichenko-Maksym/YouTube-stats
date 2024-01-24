@@ -98,7 +98,7 @@ export class Channel {
     this.startCollectingFrom = startCollectingFrom;
   }
 
-  public isOnPause(): boolean {
+  public getOnPause(): boolean {
     return this.onPause;
   }
 

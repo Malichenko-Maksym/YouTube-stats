@@ -101,25 +101,6 @@
       <div class="col mb-4">
         <div class="form-check">
           <input
-            #collectSubscriberCount="ngModel"
-            [(ngModel)]="channel.collectSubscriberCount"
-            name="collectSubscriberCount"
-            id="collectSubscriberCount"
-            type="checkbox"
-            class="form-check-input"
-            checked
-          />
-          <label
-            for="collectSubscriberCount"
-            class="form-check-label user-select-none"
-            >Track Channel's Subscriber Count</label
-          >
-        </div>
-      </div>
-
-      <div class="col mb-4">
-        <div class="form-check">
-          <input
             #collectViewCount="ngModel"
             [(ngModel)]="channel.collectViewCount"
             name="collectViewCount"
@@ -132,6 +113,25 @@
             for="collectViewCount"
             class="form-check-label user-select-none"
             >Track Channel's Views</label
+          >
+        </div>
+      </div>
+
+      <div class="col mb-4">
+        <div class="form-check">
+          <input
+            #collectSubscriberCount="ngModel"
+            [(ngModel)]="channel.collectSubscriberCount"
+            name="collectSubscriberCount"
+            id="collectSubscriberCount"
+            type="checkbox"
+            class="form-check-input"
+            checked
+          />
+          <label
+            for="collectSubscriberCount"
+            class="form-check-label user-select-none"
+            >Track Channel's Subscriber Count</label
           >
         </div>
       </div>

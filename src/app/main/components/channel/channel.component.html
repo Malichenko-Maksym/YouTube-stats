@@ -1,1 +1,111 @@
-<p>channel works!</p>
+<div
+  class="d-flex justify-content-between align-items-center mb-4 border-bottom"
+>
+  <h1 class="text-center">
+    {{ channel.getChannelUserAlias() }} &#40;{{
+      channel.getChannelUserAlias()
+    }}&#41;
+  </h1>
+
+  <div class="d-flex gap-2">
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="channel.toggleOnPause()"
+    >
+      <span
+        *ngIf="
+          channel.getOnPause();
+          then thenPauseButtonBlock;
+          else elsePauseButtonBlock
+        "
+      ></span>
+      <ng-template #thenPauseButtonBlock>Pause</ng-template>
+      <ng-template #elsePauseButtonBlock>Resume</ng-template>
+    </button>
+
+    <button
+      type="button"
+      class="btn btn-secondary"
+      routerLink="/channel/{{ channel.getId() }}/edit"
+    >
+      Edit
+    </button>
+
+    <button
+      type="button"
+      class="btn btn-warning"
+      (click)="onRemovedChannel(channel)"
+    >
+      Remove
+    </button>
+  </div>
+</div>
+
+<h4>
+  Channel tracking
+  <span
+    *ngIf="channel.getOnPause(); then thenPauseInfo; else elsePauseInfo"
+  ></span>
+  <ng-template #thenPauseInfo>paused. No data displayed.</ng-template>
+  <ng-template #elsePauseInfo>
+    resumed. Tracking:
+    <div class="d-block mt-3 btn-group" role="group">
+      <input
+        *ngIf="channel.getCollectVideoCount()"
+        type="radio"
+        class="btn-check"
+        name="btnradio"
+        id="buttonVideoCount"
+        (click)="changeDisplayedChart('videoCount')"
+        checked
+      />
+      <label
+        *ngIf="channel.getCollectVideoCount()"
+        for="buttonVideoCount"
+        class="btn btn-outline-primary"
+        >Uploaded Video Count</label
+      >
+
+      <input
+        *ngIf="channel.getCollectViewCount()"
+        type="radio"
+        class="btn-check"
+        name="btnradio"
+        id="buttonViewCount"
+        (click)="changeDisplayedChart('viewCount')"
+      />
+      <label
+        *ngIf="channel.getCollectViewCount()"
+        for="buttonViewCount"
+        class="btn btn-outline-primary"
+        >Channel's Views</label
+      >
+
+      <input
+        *ngIf="channel.getCollectSubscriberCount()"
+        type="radio"
+        class="btn-check"
+        name="btnradio"
+        id="buttonSubscriberCount"
+        (click)="changeDisplayedChart('subscriberCount')"
+      />
+      <label
+        *ngIf="channel.getCollectSubscriberCount()"
+        for="buttonSubscriberCount"
+        class="btn btn-outline-primary"
+        >Subscriber Count</label
+      >
+    </div>
+  </ng-template>
+</h4>
+
+<div
+  *ngIf="!channel.getOnPause()"
+  [ngSwitch]="displayedChart"
+  class="d-flex justify-content-center align-items-center mt-5"
+  >
+  <app-chart *ngSwitchCase="'videoCount'" [statistics]="statistics.getVideoCountDictionary()" class="flex-grow-1"></app-chart>
+  <app-chart *ngSwitchCase="'viewCount'" [statistics]="statistics.getViewCountDictionary()" class="flex-grow-1"></app-chart>
+  <app-chart *ngSwitchCase="'subscriberCount'" [statistics]="statistics.getSubscriberCountDictionary()" class="flex-grow-1"></app-chart>
+</div>

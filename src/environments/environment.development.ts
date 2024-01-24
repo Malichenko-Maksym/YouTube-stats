@@ -4,8 +4,8 @@ export const environment = {
   production: false,
   channelList: [
     new Channel(
-      '234234',
-      'https://local.local/25304537485903',
+      'UCiMhD4jzUqG-IgPzUmmytRQ',
+      'https://www.youtube.com/channel/UCiMhD4jzUqG-IgPzUmmytRQ',
       'realdude!',
       true,
       true,
@@ -15,10 +15,10 @@ export const environment = {
       false,
     ),
     new Channel(
-      '93475937459',
-      'https://local.local/sonfsiufsiufdri',
+      '@daftpunk',
+      'https://www.youtube.com/@daftpunk',
       'fakeguy',
-      true,
+      false,
       true,
       true,
       1,
@@ -27,4 +27,50 @@ export const environment = {
       'real channel for real men!',
     ),
   ] as Channel[],
+  statisticsJson: JSON.stringify({
+    channel_link: 'https://www.youtube.com/channel/UCiMhD4jzUqG-IgPzUmmytRQ',
+    channel_user_alias: 'realdude!',
+    channel_title: 'RealDudeTM',
+    video_count: [
+      {
+        '2024-01-25': 123,
+      },
+      {
+        '2024-01-27': 456,
+      },
+      {
+        '2024-01-29': 789,
+      },
+    ],
+    view_count: [
+      {
+        '2024-01-25': 222,
+      },
+      {
+        '2024-01-27': 334,
+      },
+      {
+        '2024-01-29': 467,
+      },
+    ],
+    subscriber_count: [
+      {
+        '2024-01-25': 123,
+      },
+      {
+        '2024-01-27': 456,
+      },
+      {
+        '2024-01-29': 789,
+      },
+      {
+        '2024-01-31': 456,
+      },
+      {
+        '2024-02-02': 789,
+      },
+    ],
+    on_pause: false,
+    user_comment: '',
+  }),
 };

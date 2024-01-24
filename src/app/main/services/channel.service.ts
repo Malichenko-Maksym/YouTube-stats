@@ -10,7 +10,27 @@ export class ChannelService {
 
   constructor(private httpClient: HttpClient) {
     if (!environment.production) {
-      this.channelList = environment.channelList;
+      const channelListParsed = JSON.parse(environment.channelListJson);
+
+      for (const channel of channelListParsed) {
+        const newChannel: Channel = new Channel();
+
+        newChannel.setId(channel['channel_id']);
+        newChannel.setChannelLink(channel['channel_link']);
+        newChannel.setChannelTitle(channel['channel_title']);
+        newChannel.setChannelUserAlias(channel['channel_user_alias']);
+        newChannel.setCollectVideoCount(channel['collect_video_count']);
+        newChannel.setCollectViewCount(channel['collect_view_count']);
+        newChannel.setCollectSubscriberCount(
+          channel['collect_subscriber_count'],
+        );
+        newChannel.setCollectOnceInNDays(channel['collect_once_in_n_days']);
+        newChannel.setstartCollectingFrom(channel['start_collect_from']);
+        newChannel.setOnPause(channel['on_pause']);
+        newChannel.setUserComment(channel['user_comment']);
+
+        this.channelList.push(newChannel);
+      }
     }
   }
 

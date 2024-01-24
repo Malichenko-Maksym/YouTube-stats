@@ -1,5 +1,5 @@
 <div
-  class="d-flex justify-content-between align-items-center mb-4 border-bottom"
+  class="d-flex justify-content-between align-items-center mb-2 border-bottom"
 >
   <h1 class="text-center">
     {{ channel.getChannelUserAlias() }} &#40;{{
@@ -40,6 +40,10 @@
       Remove
     </button>
   </div>
+</div>
+
+<div *ngIf="channel.getUserComment() !== ''" class="mb-4">
+  <span class="fst-italic">&quot;{{ channel.getUserComment() }}&quot;</span>
 </div>
 
 <h4>
@@ -104,8 +108,20 @@
   *ngIf="!channel.getOnPause()"
   [ngSwitch]="displayedChart"
   class="d-flex justify-content-center align-items-center mt-5"
-  >
-  <app-chart *ngSwitchCase="'videoCount'" [statistics]="statistics.getVideoCountDictionary()" class="flex-grow-1"></app-chart>
-  <app-chart *ngSwitchCase="'viewCount'" [statistics]="statistics.getViewCountDictionary()" class="flex-grow-1"></app-chart>
-  <app-chart *ngSwitchCase="'subscriberCount'" [statistics]="statistics.getSubscriberCountDictionary()" class="flex-grow-1"></app-chart>
+>
+  <app-chart
+    *ngSwitchCase="'videoCount'"
+    [statistics]="statistics.getVideoCountDictionary()"
+    class="flex-grow-1"
+  ></app-chart>
+  <app-chart
+    *ngSwitchCase="'viewCount'"
+    [statistics]="statistics.getViewCountDictionary()"
+    class="flex-grow-1"
+  ></app-chart>
+  <app-chart
+    *ngSwitchCase="'subscriberCount'"
+    [statistics]="statistics.getSubscriberCountDictionary()"
+    class="flex-grow-1"
+  ></app-chart>
 </div>

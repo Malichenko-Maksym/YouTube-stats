@@ -1,32 +1,5 @@
-import { Channel } from '../app/main/models/channel';
-
 export const environment = {
   production: false,
-  channelList: [
-    new Channel(
-      'UCiMhD4jzUqG-IgPzUmmytRQ',
-      'https://www.youtube.com/channel/UCiMhD4jzUqG-IgPzUmmytRQ',
-      'realdude!',
-      true,
-      true,
-      false,
-      7,
-      '2025-01-01',
-      false,
-    ),
-    new Channel(
-      '@daftpunk',
-      'https://www.youtube.com/@daftpunk',
-      'fakeguy',
-      false,
-      true,
-      true,
-      1,
-      '2024-1-30',
-      true,
-      'real channel for real men!',
-    ),
-  ] as Channel[],
   statisticsJson: JSON.stringify({
     channel_link: 'https://www.youtube.com/channel/UCiMhD4jzUqG-IgPzUmmytRQ',
     channel_user_alias: 'realdude!',
@@ -73,4 +46,32 @@ export const environment = {
     on_pause: false,
     user_comment: '',
   }),
+  channelListJson: JSON.stringify([
+    {
+      channel_id: 'UCiMhD4jzUqG',
+      channel_link: 'https://www.youtube.com/channel/UCiMhD4jzUqG-IgPzUmmytRQ',
+      channel_title: 'ExistingPerson',
+      channel_user_alias: 'realdude!',
+      collect_once_in_n_days: 7,
+      collect_video_count: true,
+      collect_view_count: true,
+      collect_subscriber_count: false,
+      start_collect_from: '2025-01-01',
+      on_pause: false,
+      user_comment: '',
+    },
+    {
+      channel_id: 'daftypunky',
+      channel_link: 'https://www.youtube.com/@daftpunk',
+      channel_title: 'DaftPunkTM',
+      channel_user_alias: 'fakeguy',
+      collect_once_in_n_days: 1,
+      collect_video_count: false,
+      collect_view_count: true,
+      collect_subscriber_count: true,
+      start_collect_from: '2024-1-30',
+      on_pause: true,
+      user_comment: 'real channel for real men!',
+    },
+  ]),
 };

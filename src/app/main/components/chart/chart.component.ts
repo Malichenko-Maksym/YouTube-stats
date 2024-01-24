@@ -18,8 +18,6 @@ export class ChartComponent implements OnInit {
   };
 
   ngOnInit() {
-    console.log(this.statistics, Object.keys(this.statistics));
-
     this.keys = Object.keys(this.statistics);
 
     this.lineChartData = {

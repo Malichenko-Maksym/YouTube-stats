@@ -1,6 +1,7 @@
 export class Channel {
   id: string;
   channelLink: string;
+  channelTitle: string;
   channelUserAlias: string;
   collectVideoCount: boolean;
   collectViewCount: boolean;
@@ -13,6 +14,7 @@ export class Channel {
   constructor(
     id = '',
     channelLink = '',
+    channelTitle = '',
     channelUserAlias = '',
     collectVideoCount = true,
     collectViewCount = true,
@@ -24,6 +26,7 @@ export class Channel {
   ) {
     this.id = id;
     this.channelLink = channelLink;
+    this.channelTitle = channelTitle;
     this.channelUserAlias = channelUserAlias;
     this.collectVideoCount = collectVideoCount;
     this.collectViewCount = collectViewCount;
@@ -48,6 +51,14 @@ export class Channel {
 
   public getChannelLink(): string {
     return this.channelLink;
+  }
+
+  public getChannelTitle(): string {
+    return this.channelTitle;
+  }
+
+  public setChannelTitle(channelTitle: string): void {
+    this.channelTitle = channelTitle;
   }
 
   public getChannelUserAlias(): string {

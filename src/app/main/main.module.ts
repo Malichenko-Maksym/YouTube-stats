@@ -9,6 +9,8 @@ import { ChannelListComponent } from './components/channel-list/channel-list.com
 import { ChannelListElementComponent } from './components/channel-list-element/channel-list-element.component';
 import { ChannelComponent } from './components/channel/channel.component';
 import { EditChannelFormComponent } from './components/edit-channel-form/edit-channel-form.component';
+import { ChartComponent } from './components/chart/chart.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -17,8 +19,15 @@ import { EditChannelFormComponent } from './components/edit-channel-form/edit-ch
     ChannelListElementComponent,
     ChannelComponent,
     EditChannelFormComponent,
+    ChartComponent,
   ],
-  imports: [CommonModule, FormsModule, HttpClientModule, MainRoutingModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    HttpClientModule,
+    MainRoutingModule,
+    NgChartsModule,
+  ],
   providers: [ChannelService],
 })
 export class MainModule {}

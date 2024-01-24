@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Channel } from '../../models/channel';
 import { ChannelService } from '../../services/channel.service';
+import { Statistics } from '../../models/statistics';
 
 @Component({
   selector: 'app-channel',
@@ -11,6 +12,8 @@ import { ChannelService } from '../../services/channel.service';
 })
 export class ChannelComponent implements OnInit {
   channel: Channel = new Channel();
+  statistics: Statistics = new Statistics();
+  displayedChart: string = 'videoCount';
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -21,6 +24,7 @@ export class ChannelComponent implements OnInit {
   ngOnInit() {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     this.channel = this.channelService.getChannel(id as string);
+    this.statistics = this.channelService.getStatistics(this.channel);
   }
 
   onRemovedChannel(channel: Channel): void {
@@ -29,5 +33,9 @@ export class ChannelComponent implements OnInit {
 
       this.router.navigate(['/channel/list']);
     }
+  }
+
+  changeDisplayedChart(chart: string): void {
+    this.displayedChart = chart;
   }
 }

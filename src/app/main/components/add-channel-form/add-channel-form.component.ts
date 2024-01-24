@@ -39,6 +39,7 @@ export class AddChannelFormComponent {
             this.channel.getChannelLink().split('/').length - 1
           ],
         );
+
         this.channelService.addChannel(this.channel);
 
         this.router.navigate(['/channel/list']);

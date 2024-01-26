@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Channel } from '../models/channel';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
-import { Statistics } from '../models/statistics';
 import { Observable } from 'rxjs';
 
 @Injectable()

@@ -14,6 +14,7 @@ export class ChannelComponent implements OnInit {
   channel: Channel = new Channel();
   statistics: Statistics = new Statistics();
   displayedChart: string = 'videoCount';
+  areStatisticsLoaded: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -55,6 +56,8 @@ export class ChannelComponent implements OnInit {
         } catch (e) {
           console.log(e);
         }
+
+        this.areStatisticsLoaded = true;
       });
   }
 

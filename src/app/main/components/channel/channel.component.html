@@ -105,7 +105,10 @@
   </ng-template>
 </h4>
 
-<div *ngIf="areStatisticsLoaded">
+<div
+  *ngIf="areStatisticsLoaded; then statisticsChart; else placeholderChart"
+></div>
+<ng-template #statisticsChart>
   <div
     *ngIf="!channel.getOnPause()"
     [ngSwitch]="displayedChart"
@@ -127,4 +130,8 @@
       class="flex-grow-1"
     ></app-chart>
   </div>
-</div>
+</ng-template>
+<ng-template #placeholderChart>
+  <div class="d-flex justify-content-center align-items-center mt-5"></div>
+  <app-chart class="flex-grow-1"></app-chart>
+</ng-template>

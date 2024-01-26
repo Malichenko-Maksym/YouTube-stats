@@ -33,9 +33,9 @@ export class EditChannelFormComponent implements OnInit {
           return this.channel.getId() === channel.getId();
         }).length === 1
       ) {
-        this.channelService.editChannel(this.channel);
-
-        this.router.navigate(['/channel/list']);
+        this.channelService.addChannel(this.channel).subscribe((response: any) => {
+          this.router.navigate(['/channel/list']);
+        });
       }
     }
   }

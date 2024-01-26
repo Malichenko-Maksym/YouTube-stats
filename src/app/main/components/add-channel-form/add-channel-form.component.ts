@@ -40,9 +40,10 @@ export class AddChannelFormComponent {
           ],
         );
 
-        this.channelService.addChannel(this.channel);
+        this.channelService.addChannel(this.channel).subscribe((response: any) => {
+          this.router.navigate(['/channel/list']);
+        });
 
-        this.router.navigate(['/channel/list']);
       }
     }
   }

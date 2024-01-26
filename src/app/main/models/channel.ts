@@ -101,7 +101,7 @@ export class Channel {
     this.collectOnceInNDays = collectOnceInNDays;
   }
 
-  public getstartCollectingFrom(): string {
+  public getStartCollectingFrom(): string {
     return this.startCollectingFrom;
   }
 

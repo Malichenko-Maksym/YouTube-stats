@@ -24,14 +24,45 @@ export class ChannelComponent implements OnInit {
   ngOnInit() {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     this.channel = this.channelService.getChannel(id as string);
-    this.statistics = this.channelService.getStatistics(this.channel);
+    this.channelService
+      .getStatistics(this.channel)
+      .subscribe((responseStatistics: any) => {
+        try {
+          for (const videoCount of JSON.parse(responseStatistics.video_count)) {
+            Object.assign(this.statistics.videoCountDictionary, videoCount);
+          }
+        } catch (e) {
+          console.log(e);
+        }
+
+        try {
+          for (const viewCount of JSON.parse(responseStatistics.view_count)) {
+            Object.assign(this.statistics.viewCountDictionary, viewCount);
+          }
+        } catch (e) {
+          console.log(e);
+        }
+
+        try {
+          for (const subscriberCount of JSON.parse(
+            responseStatistics.subscriber_count,
+          )) {
+            Object.assign(
+              this.statistics.subscriberCountDictionary,
+              subscriberCount,
+            );
+          }
+        } catch (e) {
+          console.log(e);
+        }
+      });
   }
 
   onRemovedChannel(channel: Channel): void {
     if (confirm('Are you sure you want to remove this channel?')) {
-      this.channelService.removeChannel(channel);
-
-      this.router.navigate(['/channel/list']);
+      this.channelService.removeChannel(channel).subscribe((response: any) => {
+        this.router.navigate(['/channel/list']);
+      });
     }
   }
 

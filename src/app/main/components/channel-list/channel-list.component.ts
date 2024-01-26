@@ -18,8 +18,9 @@ export class ChannelListComponent implements OnInit {
   }
 
   onRemovedChannel(channel: Channel): void {
-    this.channelService.removeChannel(channel);
-    this.loadChannelList();
+    this.channelService.removeChannel(channel).subscribe((response: any) => {
+      this.loadChannelList();
+    });
   }
 
   loadChannelList(): void {
